@@ -1,0 +1,79 @@
+{
+  "name": "rs-admin-cli",
+  "version": "0.0.1",
+  "description": "Background management system automation command line interface",
+  "main": "src/main/index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development node src/main/dev.js",
+    "build": "npm run rbuild && npm run ebuild",
+    "dll": "cross-env NODE_ENV=production rs-compiler dll",
+    "ebuild": "rimraf build && cross-env NODE_ENV=production electron-builder",
+    "rbuild": "cross-env NODE_ENV=production rs-compiler build"
+  },
+  "repository": "https://github.com/Jines-z/rs-admin-cli",
+  "author": "Jines-z",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "antd": "3.8.0",
+    "crypto-js": "^3.1.9-1",
+    "figlet": "^1.5.0",
+    "flyio": "^0.6.14",
+    "js-cookie": "^2.2.0",
+    "mobx": "^5.9.4",
+    "mobx-react": "^5.4.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-loadable": "^5.5.0",
+    "react-router-dom": "^4.3.1",
+    "slcss": "^1.2.4"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^3.1.43",
+    "@types/js-cookie": "^2.2.3",
+    "@types/react": "^16.9.5",
+    "@types/react-dom": "^16.9.1",
+    "@types/react-loadable": "^5.5.1",
+    "@types/react-router-dom": "^5.1.0",
+    "cross-env": "^7.0.2",
+    "electron": "^9.2.1",
+    "electron-builder": "^22.8.0",
+    "rs-compiler": "^1.4.2"
+  },
+  "build": {
+    "productName": "rs-admin-cli",
+    "appId": "com.rs.admin",
+    "files": [
+      "!node_modules",
+      "!.eslintignore",
+      "!.eslintrc.js",
+      "!index.html",
+      "!project.config.js",
+      "!README.md",
+      "!tsconfig.json",
+      "!src/renderer",
+      "!dll"
+    ],
+    "directories": {
+      "output": "build"
+    },
+    "win": {
+      "icon": "src/main/icons/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["ia32"]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "src/main/icons/icon.ico",
+      "installerHeaderIcon": "src/main/icons/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

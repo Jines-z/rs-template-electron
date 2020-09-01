@@ -1,0 +1,29 @@
+@import 'styles/skin';
+
+.Layouts_wrap {
+  >div {
+    height: 100%;
+  }
+  .left {
+    width: 240px;
+    .logo {
+      width: 239px;
+      box-shadow: 0 3px 3px #363e4f;
+    }
+  }
+  .right {
+    .header {
+      box-shadow: 0 2px 5px #e4e4e4;
+      .user {
+        width: 130px;
+        color: @textColor_Light;
+        text-indent: 2rem;
+        line-height: 60px;
+      }
+    }
+    .routeWrap {
+      height: calc(100% - 60px);
+      padding: 10px 0px 0px 10px;
+    }
+  }
+}
